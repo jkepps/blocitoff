@@ -1,4 +1,5 @@
-## Blocitoff: An app that lets you create self-destructing to-do lists.
+## Blocitoff
+##### An app that lets you create self-destructing to-do lists.
 
 To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put-off. To address the problem of to-do list clutter, I created Blocitoff.
 
