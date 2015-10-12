@@ -30,6 +30,6 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Devise is a flexible authentication solution for Rails based on Warden.
-# gem 'devise'
+gem 'devise'
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 gem 'bootstrap-sass', '~> 3.3.5.1'
