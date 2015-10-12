@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  protected
+  def after_sign_in_path_for(resource)
+      users_show_path
+  end
+
   private
   def require_sign_in
   	unless current_user
   		flash[:error] = "You must be logged in to do that"
-  		redirect_to new_session_path
+  		redirect_to new_user_session_path
   	end
   end
 end

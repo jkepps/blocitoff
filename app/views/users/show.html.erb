@@ -1,0 +1,4 @@
+<h1>User Profile</h1>
+<p>Email: <%= current_user.email %></p>
+<p>Member since: <%= current_user.created_at.strftime("%B %d, %Y") %></p>
+<%= link_to "Edit Info", edit_user_registration_path %>
