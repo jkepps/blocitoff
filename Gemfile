@@ -10,10 +10,13 @@ end
 
 group :development do
 	gem 'sqlite3'
+	gem 'pry-rails'
 end
 
 group :development, :test do
 	gem 'rspec-rails', '~> 3.0'
+	gem 'shoulda'
+	gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Use SCSS for stylesheets
@@ -26,3 +29,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+# Devise is a flexible authentication solution for Rails based on Warden.
+# gem 'devise'
+# Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
+gem 'bootstrap-sass', '~> 3.3.5.1'

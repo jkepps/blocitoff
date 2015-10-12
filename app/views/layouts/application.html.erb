@@ -2,13 +2,38 @@
 <html>
 <head>
   <title>Blocitoff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="container" role="navigation">
+		<div class="navbar-header">
+			<%= link_to 'Blocitoff', root_path, class: 'navbar-brand' %>
+		</div>
+		<% if true %>
+			<ul class="nav navbar-nav navbar-left">
+				<li><%= link_to "Home", root_path %></li>
+				<li><%= link_to "About", about_path %></li>
+			</ul>
+			<div class="pull-right">
+   				<%= link_to current_user.username, edit_user_registration_path %> <br>
+   				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+			</div>
+		<% else %>
+			<ul class="nav navbar-nav navbar-left">
+				<li><%= link_to "Home", root_path %></li>
+				<li><%= link_to "About", about_path %></li>
+				<li><%= link_to "Sign Up", new_user_registration_path %></li>
+				<li><%= link_to "Sign In", new_user_session_path %></li>
+			</ul>
+		<% end %>
+	</div>
 
-<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

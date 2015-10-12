@@ -1,0 +1,26 @@
+.jumbotron {
+	background-color: #3498D8 !important;
+	min-height: 500px;
+
+}
+
+.jumbotron>.container>.main-header, .jumbotron>.container>p>a {
+	color: #E74C3C;
+}
+
+.jumbotron>.container>p>a:hover {
+	text-decoration: none !important;
+	color: #ECF0F1;
+}
+
+.glyphicon {
+	font-size: 5rem;
+}
+
+.row {
+	padding: 50px auto;
+}
+
+.jumbotron>.container {
+	margin-top: 100px;
+}
