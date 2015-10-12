@@ -33,3 +33,5 @@ gem 'turbolinks'
 gem 'devise'
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 gem 'bootstrap-sass', '~> 3.3.5.1'
+# Figaro will store Sendgrid and Devise credentials as environment variables.
+gem 'figaro', '1.0'
