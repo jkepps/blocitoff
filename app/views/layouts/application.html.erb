@@ -18,7 +18,7 @@
 				<li><%= link_to "About", about_path %></li>
 			</ul>
 			<div class="pull-right text-right">
-   				<%= link_to current_user.username.capitalize, users_show_path %> <br> 
+   				<%= link_to current_user.username.capitalize, user_path(current_user.id) %> <br> 
    				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 			</div>
 		<% else %>
@@ -32,6 +32,25 @@
 	</div>
 
 	<div class="container">
+		<div class="flash">
+	      	<% if flash[:notice] %>
+	        	<div class="alert alert-success">
+	          		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	          		<%= flash[:notice] %>
+	        	</div>
+	      	<% elsif flash[:error] %>
+		        <div class="alert alert-danger">
+			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+			        <%= flash[:error] %>
+		        </div>
+	      <% elsif flash[:alert] %>
+	        	<div class="alert alert-warning">
+	          		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	          		<%= flash[:alert] %>
+	        	</div>
+	      <% end %>
+	    </div>
+
 		<%= yield %>
 	</div>
 

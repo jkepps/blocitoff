@@ -1,4 +1,13 @@
-<h1><%= current_user.username.capitalize %></h1>
-<p>Email: <%= current_user.email %></p>
-<p>Member since: <%= current_user.created_at.strftime("%B %d, %Y") %></p>
-<%= link_to "Edit Info", edit_user_registration_path %>
+<div class="well well-lg">
+	<h1><%= current_user.username.capitalize %></h1>
+	<p>Email: <%= current_user.email %></p>
+	<p>Member since: <%= current_user.created_at.strftime("%B %d, %Y") %></p>
+	<%= link_to "Edit Info", edit_user_registration_path %>
+</div>
+<div class="col-sm-offset-4 col-sm-4">
+	<h2 class="text-center">To-Do List</h2>
+	<%= render partial: 'items/item', locals: {user: @user} %>
+	<% if current_user == @user %>
+		<%= render partial: 'items/form', locals: {user: @user} %>
+	<% end %>
+</div>

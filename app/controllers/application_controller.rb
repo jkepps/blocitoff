@@ -11,14 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-      users_show_path
-  end
-
-  private
-  def require_sign_in
-  	unless current_user
-  		flash[:error] = "You must be logged in to do that"
-  		redirect_to new_user_session_path
-  	end
+      user_path(current_user)
   end
 end

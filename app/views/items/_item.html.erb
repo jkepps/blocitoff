@@ -1,0 +1,6 @@
+<% user.items.each do |item| %>
+	<% unless item.created_at.blank? %>
+		<h4><%= item.name %></h4>
+		<small>Created: <%= time_ago_in_words(item.created_at) %> ago</small>
+	<% end %>
+<% end %>
