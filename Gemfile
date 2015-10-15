@@ -21,6 +21,7 @@ group :development, :test do
 	gem 'spring-commands-rspec'
 	gem 'vcr'
 	gem 'shoulda'
+	gem 'faker'
 end
 
 group :test do
