@@ -1,6 +1,15 @@
 <% user.items.each do |item| %>
 	<% unless item.created_at.blank? %>
-		<h4><%= item.name %></h4>
-		<small>Created: <%= time_ago_in_words(item.created_at) %> ago</small>
+		<%= content_tag :div, class: 'item row', id: "item-#{item.id}" do %>
+			<% if @user == current_user %>
+				<div class="check-mark pull-left">
+					<%= link_to "", [item.user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true %>
+				</div>
+			<% end %>
+			<%= content_tag :div, class: 'item-details pull-left' do %>
+				<h4><%= item.name %></h4>
+				<small>Created: <%= time_ago_in_words(item.created_at) %> ago</small>
+			<% end %>
+		<% end %>
 	<% end %>
 <% end %>

@@ -1,3 +1,15 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.to-do-list .glyphicon-ok {
+	padding: 10px;
+	font-size: 3rem;
+}
+
+.to-do-list .glyphicon-ok:hover {
+	text-decoration: none;
+}
+
+.new-item-form {
+	margin: 30px auto;
+}

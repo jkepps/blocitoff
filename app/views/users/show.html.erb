@@ -4,7 +4,7 @@
 	<p>Member since: <%= @user.created_at.strftime("%B %d, %Y") %></p>
 	<%= link_to "Edit Info", edit_user_registration_path %>
 </div>
-<div class="col-sm-offset-4 col-sm-4">
+<div class="col-md-12 to-do-list">
 	<h2 class="text-center">To-Do List</h2>
 	<%= render partial: 'items/item', locals: {user: @user} %>
 	<% if current_user == @user %>

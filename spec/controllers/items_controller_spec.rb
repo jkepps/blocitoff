@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe ItemsController, type: :controller do
 	let(:my_user) { create( :user ) }
 	let(:my_item) { create( :item ) }
+  let(:other_user) { create( :user) }
 
   context "guest" do
     before do
@@ -18,9 +19,45 @@ RSpec.describe ItemsController, type: :controller do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
+
+    describe "DELETE destroy" do
+      before do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+      end
+
+      it "returns http redirect" do
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 
-  context "user" do
+  context "user doing CRUD on an item they don't own" do
+    before do
+      login_with other_user
+    end
+
+    describe "POST create" do
+      before do
+        post :create, user_id: my_user.id, item: { name: "List item"}
+      end
+
+      it "returns http redirect" do
+        expect(response).to redirect_to(my_user)
+      end
+    end
+
+    describe "DELETE destroy" do
+      before do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+      end
+
+      it "returns http redirect" do
+        expect(response).to redirect_to(my_user)
+      end
+    end
+  end
+
+  context "user doing CRUD on an item they do own" do
   	before do
   		login_with my_user
   	end
@@ -40,6 +77,21 @@ RSpec.describe ItemsController, type: :controller do
 
       it "redirects to the current user's profile" do
         expect(response).to redirect_to(my_user)
+      end
+    end
+
+    describe "DELETE destroy" do
+      before do
+        delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
+      end
+
+      it "deletes the item" do
+        count = Item.where({id: my_item.id}).size
+        expect(count).to eq(0)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
       end
     end
   end
