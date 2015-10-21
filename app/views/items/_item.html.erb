@@ -8,7 +8,11 @@
 			<% end %>
 			<%= content_tag :div, class: 'item-details pull-left' do %>
 				<h4><%= item.name %></h4>
-				<small>Created: <%= time_ago_in_words(item.created_at) %> ago</small>
+				<% if Date.today > item.created_at + 7.days %>
+					<small class="alert-danger">Expired</small>
+				<% else %>
+					<small>Time remaining: <%= distance_of_time_in_words_to_now(item.created_at + 7.days) %></small>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>

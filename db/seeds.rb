@@ -16,7 +16,7 @@ users = User.all
 		name: Lorem.sentence,
 		user: users.sample
 	)
-	item.update_attribute(:created_at, rand(10.minutes..7.days).ago)
+	item.update_attribute(:created_at, rand(10.minutes..8.days).ago)
 end
 
 # Create my user account
