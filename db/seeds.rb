@@ -10,21 +10,21 @@ include Faker
 end
 users = User.all
 
-# Create to-do list items
-20.times do
-	item = Item.create!(
-		name: Lorem.sentence,
-		user: users.sample
-	)
-	item.update_attribute(:created_at, rand(10.minutes..8.days).ago)
-end
-
 # Create my user account
 User.create!(
 	username: "jepps",
 	email: "member@example.com",
 	password: "password"
 )
+
+# Create to-do list items
+40.times do
+	item = Item.create!(
+		name: Lorem.sentence,
+		user: users.sample
+	)
+	item.update_attribute(:created_at, rand(10.minutes..14.days).ago)
+end
 
 puts "Seed finished"
 puts "#{User.count} users created"
