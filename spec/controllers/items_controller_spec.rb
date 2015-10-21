@@ -20,6 +20,16 @@ RSpec.describe ItemsController, type: :controller do
       end
     end
 
+    describe "PUT complete" do
+      before do
+        put :toggle_complete, format: :js, user_id: my_user.id, id: my_item.id
+      end
+
+      it "returns http redirect" do
+        expect(response).to have_http_status(401)
+      end
+    end
+
     describe "DELETE destroy" do
       before do
         delete :destroy, format: :js, user_id: my_user.id, id: my_item.id
@@ -39,6 +49,16 @@ RSpec.describe ItemsController, type: :controller do
     describe "POST create" do
       before do
         post :create, user_id: my_user.id, item: { name: "List item"}
+      end
+
+      it "returns http redirect" do
+        expect(response).to redirect_to(my_user)
+      end
+    end
+
+    describe "PUT complete" do
+      before do
+        put :toggle_complete, format: :js, user_id: my_user.id, id: my_item.id
       end
 
       it "returns http redirect" do
@@ -77,6 +97,16 @@ RSpec.describe ItemsController, type: :controller do
 
       it "redirects to the current user's profile" do
         expect(response).to redirect_to(my_user)
+      end
+    end
+
+    describe "PUT complete" do
+      before do
+        put :toggle_complete, format: :js, user_id: my_user.id, id: my_item.id
+      end
+
+      it "toggles complete attribute" do
+        expect(my_item[:complete]).to be_truthy
       end
     end
 

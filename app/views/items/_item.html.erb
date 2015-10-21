@@ -1,9 +1,9 @@
 <% user.items.each do |item| %>
 	<% unless item.created_at.blank? %>
-		<%= content_tag :div, class: 'item row', id: "item-#{item.id}" do %>
+		<%= item_group_tag(item) do %>
 			<% if @user == current_user %>
 				<div class="check-mark pull-left">
-					<%= link_to "", [item.user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true %>
+					<%= link_to "", [item.user, item], method: :put, class: 'glyphicon glyphicon-ok', remote: true %>
 				</div>
 			<% end %>
 			<%= content_tag :div, class: 'item-details pull-left' do %>
@@ -12,6 +12,9 @@
 					<small class="alert-danger">Expired</small>
 				<% else %>
 					<small>Time remaining: <%= distance_of_time_in_words_to_now(item.created_at + 7.days) %></small>
+				<% end %>
+				<% if @user == current_user %>
+					<%= link_to "", [item.user, item], method: :delete, class: 'glyphicon glyphicon-trash', remote: true %>
 				<% end %>
 			<% end %>
 		<% end %>

@@ -18,10 +18,12 @@ User.create!(
 )
 
 # Create to-do list items
+bool = [false, true]
 40.times do
 	item = Item.create!(
 		name: Lorem.sentence,
-		user: users.sample
+		user: users.sample,
+		complete: bool.sample
 	)
 	item.update_attribute(:created_at, rand(10.minutes..14.days).ago)
 end

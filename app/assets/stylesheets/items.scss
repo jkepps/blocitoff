@@ -4,12 +4,29 @@
 .to-do-list .glyphicon-ok {
 	padding: 10px;
 	font-size: 3rem;
+	color: #fff;
 }
 
 .to-do-list .glyphicon-ok:hover {
+	color: green;
+}
+
+.to-do-list .glyphicon-trash {
+	font-size: 1.5rem;
+}
+
+.glyphicon:hover, .glyphicon:active, .glyphicon:focus {
 	text-decoration: none;
 }
 
 .new-item-form {
 	margin: 30px auto;
+}
+
+.completed h4{
+	text-decoration: line-through;
+}
+
+.completed .glyphicon-ok {
+	color: green;
 }

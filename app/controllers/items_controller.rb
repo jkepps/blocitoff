@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_user, only: [:create, :destroy]
+  before_action :authorize_user, only: [:create, :destroy, :toggle_complete]
 
   def create
   	@user = User.find(params[:user_id])
@@ -13,6 +13,20 @@ class ItemsController < ApplicationController
   		flash[:error] = "There was an error saving your item. Please try again."
   		redirect_to @user
   	end
+  end
+
+  def toggle_complete
+    @user = User.find(params[:user_id])
+    @item = Item.find(params[:id])
+    complete = @item.complete
+
+    @item.update_attributes(complete: !complete)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def destroy
