@@ -76,5 +76,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'limitless-cliffs-7354.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'blocitoff-jepps.herokuapp.com' }
 end
